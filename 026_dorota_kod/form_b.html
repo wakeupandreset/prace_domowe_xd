@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <br>
+    <br>
+    <br>
+    <h1 style="text-align:center">Cześć! Wypełnij formularz :)</h1>
+    <br>
+    <br>
+    <form style="text-align:center" action="" method="post">
+    
+        {{ form.csrf_token() }}
+            
+        <p><b>{{ form.name.label }}</b></p>
+        <p>{{ form.name }}</p>
+
+        <p><b>{{ form.python.label }}</b></p>
+        <p>{{ form.python }}</p>
+
+        <p><b>{{ form.level.label }}</b></p>
+        <p>{{ form.level }}</p>
+
+        <p><b>{{ form.checkbox.label }}</b></p>
+        <p>{{ form.checkbox }}</p>
+            
+        <p>{{ form.button }}</p>
+
+    </form>
+    <br>
+    <br>
+</div>
+
+{% endblock %}
