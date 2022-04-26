@@ -16,23 +16,6 @@ def index():
 
 # Forms
 
-@app.route('/form_a', methods=["GET", "POST"])
-def form_a():
-
-    form = X()
-    if form.validate_on_submit():
-        
-        github = form.github.data
-        my_github_state = form.my_github_state.data
-        follow_me = form.follow_me.data
-
-        string = '{}\n{}\n{}\n\n'.format(github, my_github_state, follow_me)
-        save_data(string)
-
-        return redirect(url_for('form_result'))
-
-    return render_template("form_a.html", form=form)
-
 @app.route('/form_b', methods=["GET", "POST"])
 def form_b():
 
@@ -57,29 +40,11 @@ def form_result():
 
 # Helpers
 
-def save_data(string):
-    with open('dane/data.txt', "a") as f:
-        f.write(string)
-
 def save_data_b(string):
     with open('dane/data_b.txt', "a") as f:
         f.write(string)
 
 # Form
-
-class X(FlaskForm):
-    x_options = [
-            ('a','a'),
-            ('a','b'),
-            ('c','c'),
-            ('d','d'),
-    ]
-
-    github = StringField('Twoj github:', validators=[DataRequired()])
-    my_github_state = SelectField('Ogarniam githuba na:', choices=x_options)
-    follow_me = BooleanField('Followuj mnie na gitubie :)')
-
-    button = SubmitField('kk')
 
 class B(FlaskForm):
     how_long_python_options = [
